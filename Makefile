@@ -23,3 +23,6 @@ install: venv
 
 clean:
 	rm -rf $(VENV_NAME)
+
+activate:
+	 source ${VENV_NAME}/bin/activate
