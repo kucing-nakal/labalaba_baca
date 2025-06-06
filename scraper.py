@@ -141,7 +141,10 @@ def update_manifest():
 def scrape_novel(novel_url):
     """Scrapes an entire novel from its main page URL using httpx."""
     # Using a client block is best practice for managing connections
-    with httpx.Client(timeout=30.0, follow_redirects=True) as client:
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+    }
+    with httpx.Client(timeout=30.0, follow_redirects=True, headers=headers) as client:
         try:
             main_page = client.get(novel_url)
             main_page.raise_for_status()  # Checks for 4xx/5xx responses
