@@ -11,7 +11,7 @@ import google.generativeai as genai
 REPO_PATH = "."
 NOVEL_URLS = [
     #    "https://novelbin.com/n/shadow-slave-novel",
-    "https://novelbin.com/n/supreme-magus",
+    "https://novelbin.com/b/supreme-magus",
 ]
 USE_LLM_CLEANUP = True
 GOOGLE_API_KEY = os.getenv("KUCING_NAKAL_GOOGLE_API_KEY")
