@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Novel Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Novel Library</h1>
+        </header>
+        <main id="novel-list-container">
+            <p class="loading-text">Loading library...</p>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const listContainer = document.getElementById('novel-list-container');
+            try {
+                const response = await fetch('manifest.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const novelFolders = await response.json();
+                listContainer.innerHTML = '';
+
+                if (novelFolders.length === 0) {
+                    listContainer.innerHTML = '<p>No novels found. Run the scraper to download one!</p>';
+                    return;
+                }
+                
+                novelFolders.forEach(folder => {
+                    const link = document.createElement('a');
+                    link.className = 'novel-link';
+                    // Pass the novel folder name as a URL parameter to the reader page
+                    link.href = `reader.html?novel=${encodeURIComponent(folder)}`;
+                    // Make the link text readable, e.g., "Supreme-Magus" -> "Supreme Magus"
+                    link.textContent = folder.replace(/-/g, ' ');
+                    listContainer.appendChild(link);
+                });
+
+            } catch (error) {
+                listContainer.innerHTML = '<p>Could not load library manifest. Make sure to run `python scraper_cli.py update`</p>';
+                console.error('Error loading main manifest:', error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="reader-container">
+        <header class="reader-header">
+            <a href="index.html" class="back-link">← Library</a>
+            <h1 id="novel-title">Loading...</h1>
+            <div class="controls">
+                <button id="chapter-list-btn">Chapters</button>
+                <button id="settings-btn">Settings</button>
+            </div>
+        </header>
+
+        <main id="chapter-content" class="content-typography">
+            <p class="loading-text">Loading chapter...</p>
+        </main>
+
+        <nav class="reader-nav">
+            <button id="prev-chapter-btn">← Previous</button>
+            <span id="chapter-indicator"></span>
+            <button id="next-chapter-btn">Next →</button>
+        </nav>
+    </div>
+
+    <!-- Chapter List Modal -->
+    <div id="chapter-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" title="Close">×</span>
+            <h2>Chapter List</h2>
+            <input type="text" id="chapter-search" placeholder="Search chapters...">
+            <div id="chapter-list"></div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" title="Close">×</span>
+            <h2>Settings</h2>
+            <div class="setting-item">
+                <label for="font-size">Font Size:</label>
+                <input type="range" id="font-size" min="14" max="28" value="18" step="1">
+                <span id="font-size-value">18px</span>
+            </div>
+            <div class="setting-item">
+                <label for="line-height">Line Height:</label>
+                <input type="range" id="line-height" min="1.4" max="2.2" value="1.8" step="0.1">
+                <span id="line-height-value">1.8</span>
+            </div>
+            <div class="setting-item">
+                <label>Theme:</label>
+                <button id="theme-toggle">Toggle Dark/Light</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="reader.js"></script>
+</body>
+</html>
