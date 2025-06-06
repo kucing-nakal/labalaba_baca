@@ -13,7 +13,7 @@ import google.generativeai as genai
 # --- CONFIGURATION (No changes needed) ---
 REPO_PATH = "."
 NOVEL_URLS = [
-    "https://novelbin.com/n/supreme-magus",
+    "https://novelbin.com/b/supreme-magus",
 ]
 USE_LLM_CLEANUP = True
 # The prompt for the LLM. Be very specific about what you want.
