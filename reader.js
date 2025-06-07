@@ -132,14 +132,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Modals
-    const setupModal = (btnId, modalId) => {
-        const btn = document.getElementById(btnId);
-        const modal = document.getElementById(modalId);
-        btn.addEventListener('click', () => modal.classList.add('visible'));
-        modal.querySelector('.close-btn').addEventListener('click', () => modal.classList.remove('visible'));
-    };
-    setupModal('chapter-list-btn', 'chapter-modal');
-    setupModal('settings-btn', 'settings-modal');
+    const chapterListBtn = document.getElementById('chapter-list-btn');
+    const settingsBtn = document.getElementById('settings-btn');
+    const modals = document.querySelectorAll('.modal');
+
+    chapterListBtn.addEventListener('click', () => {
+        console.log("Chapter list button clicked");
+        chapterModal.classList.add('visible');
+    });
+
+    settingsBtn.addEventListener('click', () => {
+        console.log("Settings button clicked");
+        settingsModal.classList.add('visible');
+    });
+
+    // Add a single listener for all close buttons
+    modals.forEach(modal => {
+        modal.querySelector('.close-btn').addEventListener('click', () => {
+            modal.classList.remove('visible');
+        });
+    });
 
     // Chapter List
     chapterListEl.addEventListener('click', (e) => {
